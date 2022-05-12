@@ -59,10 +59,14 @@ arrs.push({
 })
 Array.prototype.find2 = function(callback) {
         if (typeof callback == 'function') {
-            for (let i = 0; i < this.length; ++i)
+            for (let i in this) {
+                if (!this.hasOwnProperty(i)) {
+                    break;
+                }
                 if (callback(this[i], i, this)) {
                     return this[i];
                 }
+            }
         }
     }
     // var isFind = arrs.find2(function(item, index) {
@@ -73,7 +77,6 @@ Array.prototype.filter2 = function(callback) {
     if (typeof callback == 'function') {
         var arr = [];
         for (var i in this) {
-            console.log(i)
             if (!this.hasOwnProperty(i)) {
                 break;
             }
@@ -85,13 +88,12 @@ Array.prototype.filter2 = function(callback) {
     }
 }
 var isFilter = arrs.filter2(function(item, index) {
-    return item.name == 'java';
-})
-console.log(isFilter)
+        return item.name == 'java';
+    })
+    // console.log(isFilter)
 Array.prototype.every2 = function(callback) {
     if (typeof callback == 'function') {
         for (var i in this) {
-            console.log(i)
             if (!this.hasOwnProperty(i)) {
                 break;
             }
@@ -103,13 +105,15 @@ Array.prototype.every2 = function(callback) {
     }
 }
 var isEvery = arrs.every2(function(item, index) {
-        return item.coin == 0;
-    })
-    // console.log(isEvery)
+    return item.coin == 0;
+})
 
 Array.prototype.some2 = function(callback) {
     if (typeof callback == 'function') {
-        for (let i = 0; i < this.length; ++i) {
+        for (let i in this) {
+            if (!this.hasOwnProperty(i)) {
+                break;
+            }
             if (callback(this[i], i, this)) {
                 return true;
             }
