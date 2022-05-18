@@ -14,7 +14,7 @@ var h1Elements = document.querySelectorAll('h1');
 for (let i = 0; i < h1Elements.length; ++i) {
     h1Elements[i].onclick = function(e) {
         // console.log(e.target) // thường dùng
-        console.log(h1Elements[i])
+        // console.log(h1Elements[i])
 
     }
 }
