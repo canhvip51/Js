@@ -6,11 +6,11 @@
 //Pain (Vấn đề)
 //Call back hell, Pyramid of doom
 setTimeout(function() {
-        console.log(1);
+        // console.log(1);
         setTimeout(function() {
-            console.log(2);
+            // console.log(2);
             setTimeout(function() {
-                console.log(3);
+                // console.log(3);
             }, 1000)
         }, 200);
 
@@ -30,17 +30,69 @@ var promise = new Promise(
         //Thành công: resolve()
         //Thất bại: reject()
         // resolve([{ id: 1, name: 'sđsds' }])
-        reject('Co loi')
+        resolve();
+        //reject('Co loi')
     }
 );
 // .then: resolve
 // .catch: reject
 // .finally: 1 trong 2 
-promise.then(function(e) {
-    console.log('success');
-    console.log(e);
-}).catch(function(error) {
-    console.log(error);
-}).finally(function(e) {
-    console.log('done');
-})
+// promise
+//     .then(function() {
+//         console.log('1');
+//         return 1;
+//     })
+//     .then(function(e) {
+//         let rs = e + 2;
+//         console.log(rs);
+//         return rs;
+//     })
+//     .then(function(e) {
+//         let rs = e + 3;
+//         console.log(rs);
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     }).finally(function(e) {
+//         console.log('done');
+//     })
+//return ra promise
+promise
+    .then(function() {
+        return new Promise(function(resolve) {
+            setTimeout(function() {
+                resolve([1, 2, 3]);
+            }, 3000);
+        });
+    })
+    .then(function(data) {
+        //console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    }).finally(function(e) {
+        //console.log('done');
+    })
+
+//BT sau 1s hiện 1 , 2, 
+function sleep(ms) {
+    return new Promise(function(resolve) {
+        setTimeout(() => { resolve('mat them 1s') }, ms)
+    })
+}
+sleep(1000)
+    .then((e) => {
+        console.log(e);
+        console.log(1);
+        return sleep(1000);
+    })
+    .then((e) => {
+        console.log(e);
+        console.log(2);
+        return sleep(1000);
+    })
+    .then((e) => {
+        console.log(e);
+        console.log(3);
+        return sleep(1000);
+    })
