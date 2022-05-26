@@ -16,3 +16,4 @@ var a = '"string 1"';
 console.log(JSON.parse(json))
     // console.log(JSON.stringify(['J"s', 'PHP']))
 console.log(JSON.stringify({ name: 'canh', age: 2 }))
+    //  Thư viện Json server: API Server
