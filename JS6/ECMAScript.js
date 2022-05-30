@@ -92,7 +92,7 @@ const cssCourse = new Course('CSS', 100)
     // Default prameter values - Giá trị mặc định của value
     //mục đích dùng khi trong hàm có tham số không bắt buộc phải nhập
 function logger(log = "Mac dinh", type = 'log') {
-    console[type](log);
+    // console[type](log);
 }
 // logger(undefined, 'error')
 // --------------
@@ -100,11 +100,11 @@ function logger(log = "Mac dinh", type = 'log') {
 // 1. Định nghĩa key: value cho object
 // 2. Định nghĩa method cho object
 // 3. Định nghĩa key cho object dưới dạng biến
-var name = "JS";
+var namea = "JS";
 var price = 1000;
 var khoahoc = {
     //1
-    name,
+    namea,
     price,
     //2
     getName() {
@@ -113,17 +113,97 @@ var khoahoc = {
 };
 3.
 var fieldName = 'new-name';
-var fieldPrice = 'new-price'
+var fieldPrice = 'new-price';
 const khoahoc2 = {
     [fieldName]: 'Java',
     [fieldPrice]: 100,
-}
-console.log(khoahoc2);
-// Destructuring
-// Rest paramenters
-// Spread
+};
+// console.log(khoahoc2);
+// ------------
+// Destructuring (Phân rã)
 
-// tagged template Literals
-// Modules
+//arr
+var arr = ['Js', 'PHP', 'css'];
+var [a, , c] = arr;
+// console.log(a, c)
+//obj
+var khoahoc3 = {
+    ten: 'Javascript',
+    price: 10,
+    isFree: false,
+    con: { tencon: "JSREact" }
+};
+
+var { ten: tenCha, con: { tencon: tenCon }, descriptions = "default" } = khoahoc3;
+// console.log(tenCha, tenCon, descriptions)
+// Rest paramenters bù của destructuring
+//arr
+var [a1, a2, ...rest] = arr;
+var { ten, price } = khoahoc3;
+//obj
+var { ten, isFree, ...rest1 } = khoahoc3;
+// console.log(ten, rest1)
+//Viết function console.log
+function logger1(...params) {
+    // console.log(arguments);
+    // console.log(params);
+}
+// console.log(logger1(1, 2, 3, 4, 5, 6, 7, 8))
+// ----------------
+// Spread (Toán tử giải)
+var array1 = ['Js', 'Ruby', 'Concat'];
+var array2 = ['ReactJs', 'Dart'];
+var array3 = [...array1, ...array2];
+// console.log(array3)
+var obj1 = {
+    nameObj: "Js"
+}
+var obj2 = {
+    priceObj: 100
+}
+var obj3 = {
+        ...obj1,
+        ...obj2
+    }
+    // console.log(obj3)
+    //TỔNG KẾT
+    //REST sử dụng cùng Destructuring, đinh nghĩa ra tham số
+    //SPREAD sử dụng truyền đối số vào hàm
+    // ---------
+    // Tagged template Literals
+function highLight([first, ...strings], ...values) {
+    return values.reduce((giatritrc, giatritiep) => [...giatritrc, `<span>${giatritiep}</span>`, strings.shift()], [first])
+        //console.log(rest)
+}
+var brand = "F8";
+var jsf8 = 'Javascript';
+var htmlHigh = highLight `Hoc lap trinh ${jsf8} tai ${brand}!`;
+console.log(htmlHigh)
+    // Modules: Import / Expor
+    // import module
+    // from './module.js'
+    // trong 1 model có thể có nhiều Export  và chỉ có 1 default
+import module
+//, {
+//     TYPE_LOG,
+//     TYPE_WARN,
+//     TYPE_ERROR,
+// }
+from './module.js';
+// import {
+//     TYPE_LOG,
+//     TYPE_WARN,
+//     TYPE_ERROR,
+// }
+// from './constType.js';
+import * as constants
+from './constType.js';
+console.log(module)
+console.log(constants)
+module("msg wwww", constants.TYPE_LOG)
+
+import { newNameModule }
+from './index.js';
+console.log(newNameModule)
 
 //Babel
