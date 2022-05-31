@@ -20,6 +20,6 @@ function word1() {
 function word2() {
     console.log('viec 2')
 }
-btn.addEventListener('click', word1)
-btn.addEventListener('click', word2)
+btn.addEventListener('click', () => { word1 })
+btn.addEventListener('click', () => { word2 })
 btn.removeEventListener('click', word1);

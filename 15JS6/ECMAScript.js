@@ -47,21 +47,21 @@ const sum = (a, b) => {
 };
 const sumObjs = (a, b) => ({ a: a + b });
 const log = msg => console.log(msg)
-    //arrow function k co context
+//arrow function k co context
 const course = {
-        name: "JS",
-        getName: () => {
-            return this; //context
-        }
+    name: "JS",
+    getName: () => {
+        return this; //context
     }
-    //arrow function k thể tạo contructor
-    // console.log(course.getName())
-    // -----------------
-    // Classes
-    //có thể hiểu cách viết khác của contructor function
-    // function Course(name, price) {
-    //     this.name = name;
-    //     this.price = price;
+}
+//arrow function k thể tạo contructor
+// console.log(course.getName())
+// -----------------
+// Classes
+//có thể hiểu cách viết khác của contructor function
+// function Course(name, price) {
+//     this.name = name;
+//     this.price = price;
 
 //     this.getName = function() {
 //         return this.name;
@@ -88,9 +88,9 @@ class Course {
 }
 const phpCourse = new Course('PHP', 100);
 const cssCourse = new Course('CSS', 100)
-    // -------------
-    // Default prameter values - Giá trị mặc định của value
-    //mục đích dùng khi trong hàm có tham số không bắt buộc phải nhập
+// -------------
+// Default prameter values - Giá trị mặc định của value
+//mục đích dùng khi trong hàm có tham số không bắt buộc phải nhập
 function logger(log = "Mac dinh", type = 'log') {
     // console[type](log);
 }
@@ -162,34 +162,34 @@ var obj2 = {
     priceObj: 100
 }
 var obj3 = {
-        ...obj1,
-        ...obj2
-    }
-    // console.log(obj3)
-    //TỔNG KẾT
-    //REST sử dụng cùng Destructuring, đinh nghĩa ra tham số
-    //SPREAD sử dụng truyền đối số vào hàm
-    // ---------
-    // Tagged template Literals
+    ...obj1,
+    ...obj2
+}
+// console.log(obj3)
+//TỔNG KẾT
+//REST sử dụng cùng Destructuring, đinh nghĩa ra tham số
+//SPREAD sử dụng truyền đối số vào hàm
+// ---------
+// Tagged template Literals
 function highLight([first, ...strings], ...values) {
     return values.reduce((giatritrc, giatritiep) => [...giatritrc, `<span>${giatritiep}</span>`, strings.shift()], [first])
-        //console.log(rest)
+    //console.log(rest)
 }
 var brand = "F8";
 var jsf8 = 'Javascript';
-var htmlHigh = highLight `Hoc lap trinh ${jsf8} tai ${brand}!`;
+var htmlHigh = highLight`Hoc lap trinh ${jsf8} tai ${brand}!`;
 console.log(htmlHigh)
-    // Modules: Import / Expor
-    // import module
-    // from './module.js'
-    // trong 1 model có thể có nhiều Export  và chỉ có 1 default
+// Modules: Import / Expor
+// import module
+// from './module.js'
+// trong 1 model có thể có nhiều Export  và chỉ có 1 default
 import module
-//, {
-//     TYPE_LOG,
-//     TYPE_WARN,
-//     TYPE_ERROR,
-// }
-from './module.js';
+    //, {
+    //     TYPE_LOG,
+    //     TYPE_WARN,
+    //     TYPE_ERROR,
+    // }
+    from './module.js';
 // import {
 //     TYPE_LOG,
 //     TYPE_WARN,
@@ -197,13 +197,32 @@ from './module.js';
 // }
 // from './constType.js';
 import * as constants
-from './constType.js';
-console.log(module)
-console.log(constants)
+    from './constType.js';
+// console.log(module)
+// console.log(constants)
 module("msg wwww", constants.TYPE_LOG)
 
 import { newNameModule }
-from './index.js';
-console.log(newNameModule)
+    from './index.js';
+// console.log(newNameModule)
+// ------------------------
+//Optional chaining  (?.)
+var obj1 = {
+    name: 'Alice',
+    cat: {
+        name: 'Dinah',
+        cat2: {
+            name: 'Dinah2',
+        },
+
+    },
+    // getName(value) {
+    //     console.log(value)
+    // }
+}
+if (obj1?.['cat']?.['cat2']) {
+    console.log(obj1.cat.cat2.name);
+}
+obj1.getName?.(123);
 
 //Babel
