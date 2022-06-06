@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+
+<body>
+    <!-- 
+        1. React.createElement() -> React element
+        2. So sánh với document.createElement()-> DOM element
+        3. Thay đổi: id, className, style, ..
+        4. Thêm: text, HTML
+     -->
+    <!-- 
+        1.Tại sao lại dùng React-DOM?
+        2.Tại sao lại tách React-DOM ra? React-Native IOS, Android
+        3.Render UI
+     -->
+    <div id="root"></div>
+    <script>
+        // React18
+        const container = document.getElementById("root");
+        const root = ReactDOM.createRoot(container)
+        //   5. Tạo:
+        //     <h1 title="Hello" class="heading">Hello guys</h1> 
+        const h1React = React.createElement(
+            'h1',
+            {
+                title: 'Hello',
+                className: 'heading'
+            }, "hello guys")
+        root.render(h1React)
+        //   6. Tạo:
+        //     <ul>
+        //         <li>Javascript</li>
+        //         <li>ReactJS</li>
+        //     </ul>
+
+        const ulReact = React.createElement('ul',
+            {},
+            React.createElement('li', {}, 'javascript'),
+            React.createElement('li', {}, "reactJs"));
+        // root.render(ulReact)
+        //   7. Tạo:
+        //     <div class="post-item">
+        //         <h2 title="Học React tại F8">Học ReactJS</h2>
+        //         <p>Học ReactJS từ cơ bản đến nâng cao</p>
+        //     </div>
+
+        const divReact = React.createElement(
+            'div',
+            {
+                className: "post-item",
+            },
+            React.createElement(
+                'h2',
+                {
+                    title: "Học react tại F8"
+                },
+                "Học ReactJS",
+            ), React.createElement(
+                'p',
+                {},
+                "Học reactJS từ cơ bản đến nâng cao"
+            )
+        )
+        // console.log(divReact)
+        //Get root element
+
+        //Render-DOM -> renderUI
+        // root.render(divReact)
+    </script>
+</body>
+
+</html>
