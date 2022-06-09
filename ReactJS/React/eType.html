@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- Hook
+1.React element types: string, function/class
+--Warpper
+- Header ->header component
+- Content -> Content component
+- Footer -> Footer component
+2. Biểu diễn đơn giản với JSX
+ -->
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function Header() {
+            return (
+                <div className="header">Header Component</div>
+            )
+        }
+        class Content extends React.Component {
+            render() {
+                return (<div className="header" > content component</div >)
+            }
+        }
+        // const app = (
+        //     <div className="wrapper">
+        //         <Header> </Header >
+        //         <Content></Content>
+        //         <div className="footer"> Footer </div>
+        //     </div>
+        // )
+        // BT
+        //      <div class="posts-list">
+        //     <div class="post-item">
+        //         <h2 class="post-title"> C###</h2>
+        //         <p class="post-desc">desccc</p>
+        //         <p class="post-published"> pubbb</p>
+        //     </div>
+        // </div>
+        function PostItem() {
+            return (<div className="post-item">
+                <label forHtml="email">Email</label>
+                <input id="email"></input>
+                <h2 className="post-title"> C###</h2>
+                <p className="post-desc">descccs</p>
+                <p className="post-published"> pubbb</p>
+            </div>)
+        }
+        const app = (
+            <div className="posts-list">
+                <PostItem></PostItem>
+                <PostItem></PostItem>
+                <PostItem></PostItem>
+            </div>
+        )
+        ReactDOM.render(app, document.getElementById('app'));
+    </script>
+</body>
+
+
+</html>

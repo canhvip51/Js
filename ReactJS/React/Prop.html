@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- Prop
+--React elements
+- Sử dụng props giống như với attribute của thẻ HTML
+- 2 props class, for => className, htmlFor
+- Phải tuân theo quy ước có sẵn
+--React components
+- Sử dụng prop gióng như đối số cho components
+- Tự do đặt tên props
+Đăt theo camelCase
+Có thể bao gồm dấu gạch ngang
+--Chú ý:
+- Prop "key" là prop đặc biệt
+- Props cơ bản là đối số của component
+=> Props có thể là bất cứ kiểu dữ liệt gì
+- Sử dụng détructuring -->
+    <script type="text/babel">
+        function PostItem(props) {
+            return (<div className="post-item">
+                <h2 className="post-title">{props.title}</h2>
+                <p className="post-desc">{props.des}</p>
+                <p className="post-published"> {props.pub}</p>
+            </div>)
+        }
+
+        const app = (
+            <div className="posts-list">
+                <PostItem></PostItem>
+                <PostItem></PostItem>
+                <PostItem></PostItem>
+            </div>
+        )
+        const arr = [
+            { name: "HTML", des: "khóa HTML" },
+            { name: "JS", des: "khóa JS" },
+            { name: "Css", des: "KHóa CSS" },
+        ];
+        function App() {
+            return (
+                <div id="wrapper">
+                    {arr.map(e => {
+                        return <PostItem title={e.name}
+                            des={e.des}
+                            pub={e.des}>
+                        </PostItem>
+                    })}
+                </div>
+            )
+        }
+        ReactDOM.render(<App></App>, document.getElementById('app'));
+    </script>
+</body>
+
+
+</html>

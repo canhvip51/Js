@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- JSX -> Javasctipt XML
+1.Luôn dùng React.createElement? Vấn đề?
+----
+2.JSX? https://bit.ly/2VOIMN7
+const data="ssss";
+const ul =<ul className="u-list">
+    <li style={{color:'red'}}>Javascript</li>
+    <li>{data}</li>
+</ul>
+=>
+var data = "ssss";
+var ul = /*#__PURE__*/React.createElement("ul", {
+className: "u-list"
+}, /*#__PURE__*/React.createElement("li", {
+style: {
+color: 'red'
+}
+}, "Javascript"), /*#__PURE__*/React.createElement("li", null, data));
+-----
+3.JSX không phải HTML,
+Cần có Javascript, Babel để dùng JSX
+4. JSX và React-DOM?  -->
+    <div id="root"></div>
+    <script type="text/babel">
+        const reactC = "React JS";
+        const arr = [
+            { name: "HTML" },
+            { name: "JS" },
+            { name: "Css" },
+        ];
+        // const data =
+        //     arr.map((x) => {
+        //         return <li>{x.name}</li>
+        //     })
+        // const ul = <ul className="u-list">
+        //     {data}
+        // </ul>
+        //Chữa
+        const ul = <ul>{
+            arr.map((x, index) => <li key={index}>{x.name}</li>)
+        }
+        </ul>
+        ReactDOM.render(ul, document.getElementById('root'))
+
+        // const jsx = {
+        //     <h1>Heading1</h1>
+        //     <h2>Heading2</h2>
+        // }
+        // Tại sao render không được 2 element cùng lúc
+        // Dùng Fragment để giải quyết
+        //JSX
+        // const jsx = (
+        //     <React.Fragment>
+        //         <h1>Heading1</h1>
+        //         <h2>Heading2</h2>
+        //     </React.Fragment>
+        // )
+        //ReactDOM
+        const jsx = React.createElement(
+            React.Fragment,
+            {},
+            React.createElement('h1', {}, 'Heading1'),
+            React.createElement('h2', {}, 'Heading2')
+        )
+        ReactDOM.render(jsx, document.getElementById('root'))
+    </script>
+</body>
+
+
+</html>
