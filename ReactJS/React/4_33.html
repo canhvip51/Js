@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- Quy ước đặt tên components?
+//Phần 1
+- Xử lý DOM events 
+- Component do chúng ta định nghĩa phải viết
+In hoa chữ cái đầu
+Chọn conponent trong 1 object
+- Boolean, null & undefined không được reder
+- Kêt hợp toán tử logic để render theo điều kiện
+
+//Phần 2
+-Props trong JSX
+-<YourComponent
+propsName1 = "string literals"
+propsName2 = {expression}
+/>
+-Props default to "true"
+-Spread/ Rest props
+- Children prop
+- <YourComponent>String literals</YourComponent>
+- <YourComponent>{expression}</YourComponent>
+-rendesrprops -->
+    <div id="root"></div>
+    <script type="text/babel">
+        //Phần 1
+        const From = {
+            Input() {
+                return <input />
+            },
+            Checkbox() {
+                return <input type="checkbox" />
+            }
+        }
+        function App1() {
+            const type = 'Input'; //Checkbox
+            const FromType = From[type]
+            return (
+                <div id="wrapper">
+                    <FromType />
+                </div >
+            )
+        }
+
+        function Button(parameters) {
+            let TagHTML = 'button'
+            let props = {}
+            if (parameters.href) {
+                TagHTML = 'a'
+                props.href = parameters.href
+            }
+            if (parameters.onClick) {
+                props.onClick = parameters.onClick
+            }
+            return (
+                < TagHTML {...props}>{parameters.title}</TagHTML >
+            )
+        }
+        function App2() {
+            return (
+                <div id="wrapper">
+                    <Button
+                        title="click click"
+                        // href="https://www.google.com/"
+                        onClick={() => console.log(Math.random())}
+                    ></Button>
+                </div>
+            )
+        }
+
+
+
+
+        // BT tạo lại button như vd 2
+        function BtButon(params) {
+            let TagName = "button";
+            let props = {}
+            if (params.href) {
+                TagName = "a";
+                props.href = params.href;
+            }
+            if (params.onClick) {
+                props.onClick = params.onClick;
+            }
+            return (
+                <TagName {...props}>{params.title}</TagName>
+            )
+        }
+        function App3() {
+            return (
+                <div id="wrapper">
+                    <BtButon
+                        title="click meeee"
+                        // href="https://www.google.com/"
+                        onClick={() => console.log(Math.random())}
+                    ></BtButon>
+                </div >
+            )
+        }
+
+
+        const root = document.getElementById("root")
+        //Render-DOM -> renderUI
+        // ReactDOM.render(<App3 />, root)
+        //Phần 2
+        function Button2({ title, primary, children }) {
+            console.log(primary)
+            return <button>{children}</button>
+
+        }
+        function Input2({ label, ...input }) {
+            return (
+                <div>
+                    <label>{label}</label>
+                    <input {...input} />
+                </div>
+            )
+
+        }
+        //render props
+        function List({ data, children }) {
+            return <ul>
+                {data.map((...props) => children(...props))}
+            </ul>
+        }
+        function App2_1() {
+            const title = "Hello anh em"
+            const arr = ['HTML', 'CSS', 'JS']
+            return (
+                <div id="wrapper">
+                    <List data={arr}>{(item, index) => { return <li key={index}>{item}</li> }}</List>
+                    <Button2 primary title={title}> LO ae</Button2>
+                    <Input2
+                        label="Full name"
+                        type="text"
+                        placeholder="Enter  Name"
+                        title="Day la input"
+                        onFocus={() => { console.log(Math.random()) }} />
+                </div>
+            )
+        }
+        ReactDOM.render(<App2_1 />, root)
+    </script>
+</body>
+
+</html>

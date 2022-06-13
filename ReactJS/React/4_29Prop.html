@@ -30,11 +30,16 @@ Có thể bao gồm dấu gạch ngang
 - Sử dụng détructuring -->
     <script type="text/babel">
         function PostItem(props) {
-            return (<div className="post-item">
-                <h2 className="post-title">{props.title}</h2>
+            return (<div className="post-item" >
+                <h2
+                    className="post-title"
+                    onClick={() => props.actionOnClick(props)}
+                >
+                    {props.title}
+                </h2>
                 <p className="post-desc">{props.des}</p>
                 <p className="post-published"> {props.pub}</p>
-            </div>)
+            </div >)
         }
 
         const app = (
@@ -45,17 +50,22 @@ Có thể bao gồm dấu gạch ngang
             </div>
         )
         const arr = [
-            { name: "HTML", des: "khóa HTML" },
-            { name: "JS", des: "khóa JS" },
-            { name: "Css", des: "KHóa CSS" },
+            { id: 1, name: "HTML", des: "khóa HTML" },
+            { id: 2, name: "JS", des: "khóa JS" },
+            { id: 3, name: "Css", des: "KHóa CSS" },
         ];
         function App() {
+            const handleClick = (course) => {
+                console.log(course.des)
+            }
             return (
                 <div id="wrapper">
                     {arr.map(e => {
                         return <PostItem title={e.name}
+                            key={e.id}
                             des={e.des}
-                            pub={e.des}>
+                            pub={e.des}
+                            actionOnClick={handleClick}>
                         </PostItem>
                     })}
                 </div>
