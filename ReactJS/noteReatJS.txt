@@ -1,0 +1,18 @@
+ -NPM
+ - Project scope
+ - Dependencies
+    - npm install react react-dom =>dependencies
+    - npm i react react-dom =>dependencies
+- devDependencies
+    - npm install --save-dev react react-dom =>devDependencies
+    - npm i -D react react-dom =>devDependencies
+- Uninstall
+    - npm uninstall react react-dom
+ -Global scope (Cài vào global khi dự áo không phụ thuộc vào thư viện (import))
+ -install
+- npm install --global create-react-app
+- npm i -g create-react-app
+-uninstall
+- npm uninstall -g create-react=app
+ -NPX Node => NPM => NPX
+ -YARN

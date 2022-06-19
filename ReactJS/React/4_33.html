@@ -151,7 +151,23 @@ propsName2 = {expression}
                 </div>
             )
         }
-        ReactDOM.render(<App2_1 />, root)
+
+        function List2({ data, children }) {
+            return (
+                <ul>
+                    {data.map((...props) => { return children(...props) })}
+                </ul>
+            )
+        }
+        function AppBT() {
+            const title = "Hello anh em"
+            const arr = ['HTML', 'CSS', 'JS']
+            return <List2 data={arr}>{(item, index) => {
+                return <li key={index}>{item}</li>
+            }}</List2>
+        }
+
+        ReactDOM.render(<AppBT />, root)
     </script>
 </body>
 
